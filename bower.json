@@ -17,6 +17,8 @@
 	"main": "backbone-injector.js",
 	"dependencies": {
 		"backbone":"latest",
-		"injector.js": "latest"
+		"injector.js": "latest",
+		"jquery": "latest",
+		"underscore": "latest"
 	}
 }
