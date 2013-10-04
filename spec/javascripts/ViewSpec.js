@@ -19,4 +19,10 @@ describe("Injectable View", function() {
 		expect(view.model).toEqual(model);
 	});
 
+	it("automatically injects the injector in a view", function() {
+		var view = new Backbone.View({injector:injectorInstance});
+
+		expect(view.injector).toEqual(injectorInstance);
+	});
+
 });
