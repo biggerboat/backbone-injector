@@ -1,6 +1,7 @@
 before_install:
   - "npm install"
-  - "bower install"
+  - "npm install -g bower"
+  - "npm bower install"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
 script: bundle exec rake
