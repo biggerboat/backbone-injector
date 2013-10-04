@@ -1,5 +1,4 @@
 before_install:
-  - "npm install"
   - "npm install -g bower"
   - "bower install"
   - "export DISPLAY=:99.0"
