@@ -4,7 +4,7 @@
 
 	_.extend(Backbone.View.prototype, {
 
-		injector: null,
+		injector: 'inject',
 
 		_configure: function(options) {
 			if(_superConfigure!=null) {
