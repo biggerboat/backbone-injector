@@ -7,6 +7,8 @@ You could just download ```backbone-injector.js``` or ```backbone-injector.min.j
 
 We advise you to download it using [Bower](http://http://bower.io/) instead:  
 ```bower install backbone-injector```
+This command will automatically download all dependencies. So in this case it takes care of downloading 
+[injector.js](https://github.com/biggerboat/injector.js), jQuery, Backbone and Underscore for you.
 
 ## Usage
 To use the dependency injection, you need to pass an instance of the injector as the ```injector``` argument while instantiating a view.
