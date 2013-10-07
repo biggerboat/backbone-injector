@@ -5,7 +5,7 @@ Automatic dependency injection within all ```Backbone.View``` instances. This is
 ## Install
 You could just download ```backbone-injector.js``` or ```backbone-injector.min.js``` from the project root.
 
-We advise you to download it using [Bower](http://http://bower.io/) instead:
+We advise you to download it using [Bower](http://http://bower.io/) instead:  
 ```bower install backbone-injector```
 
 ## Usage
