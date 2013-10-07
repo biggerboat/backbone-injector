@@ -7,3 +7,36 @@ You could just download ```backbone-injector.js``` or ```backbone-injector.min.j
 
 We advise you to download it using [Bower](http://http://bower.io/) instead:
 ```bower install backbone-injector```
+
+## Usage
+To use the dependency injection, you need to pass an instance of the injector as the ```injector``` argument while instantiating a view.
+This plugin will take care of the boilerplate and automatically injects the view before the ```initialize``` method is called.
+
+See for example the following code stemming from a Jasmine test:
+```JavaScript
+var model = new Backbone.Model();
+var injectorInstance = new injector.Injector();
+injectorInstance.map('model').toValue(model);
+
+var ViewClass = Backbone.View.extend({
+	model: 'inject'
+});
+
+var view = new ViewClass({injector:injectorInstance});
+
+expect(view.model).toEqual(model);
+```
+
+Under the hood the ```Backbone.View``` is adjusted prototype and make sure the dependency injection takes place before the ```initialize``` method is called.
+Thus it is safe to rely on the view to be injected once you start using it.
+
+We also inject the injector inside each view. This is for convenience, so you can easily pass it on to other view instances.
+```JavaScript
+var injectorInstance = new injector.Injector();
+var view = new ViewClass({injector:injectorInstance});
+
+expect(view.injector).toEqual(injectorInstance);
+```
+
+## Support
+Feel free to create a [new issue](https://github.com/biggerboat/backbone-injector/issues/new) for all your questions, issues or feature requests.
