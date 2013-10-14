@@ -25,4 +25,10 @@ describe("Injectable View", function() {
 		expect(view.injector).toEqual(injectorInstance);
 	});
 
+	it("doesn't affect regular behavior", function() {
+		var view = new Backbone.View({el:document.body});
+
+		expect(view.el).toEqual(document.body);
+	});
+
 });
