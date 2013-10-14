@@ -8,7 +8,7 @@
 
 		_configure: function(options) {
 			if(_superConfigure!=null) {
-				_superConfigure(options);
+				_superConfigure.call(this, options);
 			}
 
 			if(options.injector!=undefined) {
