@@ -42,5 +42,7 @@ var view = new ViewClass({injector:injectorInstance});
 expect(view.injector).toEqual(injectorInstance);
 ```
 
+For example usage of this library, please refer to [Navigator-Injector-Backbone-Command-TodoMVC example](https://github.com/BiggerBoat/nibc-todomvc).
+
 ## Support
 Feel free to create a [new issue](https://github.com/biggerboat/backbone-injector/issues/new) for all your questions, issues or feature requests.
