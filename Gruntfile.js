@@ -6,16 +6,6 @@ module.exports = function (grunt) {
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 			'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>; \n*/\n',
 
-		concat: {
-			options: {
-				separator: ';'
-			},
-			dist: {
-				src: ['public/js/backbone-injector/**/*.js'],
-				dest: '<%= pkg.name %>.js'
-			}
-		},
-
 		uglify: {
 			dist: {
 				files: {
@@ -36,7 +26,7 @@ module.exports = function (grunt) {
 
 		watch: {
 			files: ['public/js/*.js'],
-			tasks: ['concat:dist','uglify:dist', 'copy:backboneInjector']
+			tasks: ['uglify:dist', 'copy:backboneInjector']
 		},
 
 		bump: {
@@ -56,13 +46,12 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-bump');
 
-	grunt.registerTask('default', ['concat','uglify', 'copy']);
+	grunt.registerTask('default', ['uglify', 'copy']);
 
 	grunt.registerTask('release', ['default','bump-commit']);
 	grunt.registerTask('release:patch', ['bump-only:patch','release']);
