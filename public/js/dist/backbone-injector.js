@@ -1,20 +1,35 @@
-(function() {
-	//Store the normal Backbone configure method, so we can call it from within the function that overrides it
-	var _superConfigure = Backbone.View.prototype._configure;
+(function(root, factory) {
 
-	_.extend(Backbone.View.prototype, {
+    // Start with AMD.
+    if (typeof define === 'function' && define.amd) {
+        define(['underscore', 'backbone'], function(_, Backbone) {
+        factory( _, Backbone);
+    });
 
-		injector: 'inject',
+    // Next for Node.js or CommonJS.
+    } else if (typeof exports !== 'undefined' && typeof require === 'function') {
+        var _ = require('underscore'),
+        Backbone = require('backbone');
+        factory(_, Backbone);
 
-		_configure: function(options) {
-			if(_superConfigure!=null) {
-				_superConfigure.call(this, options);
-			}
+    // Finally, as a browser global.
+    } else {
+        factory(root._, root.Backbone);
+    }
+}(this, function factory(_, Backbone) {
 
-			if(options.injector!=undefined) {
-				options.injector.injectInto(this);
-			}
-		}
+    var _super = Backbone.View;
 
-	});
-})();
+    function InjectableView(options) {
+        if(options.injector !== undefined) {
+            options.injector.injectInto(this);
+        }
+        _super.call(this, options);
+    }
+
+    InjectableView.prototype = _super.prototype;
+    InjectableView.prototype.injector = "inject";
+    InjectableView.extend = _super.prototype.constructor.extend;
+
+    Backbone.View = InjectableView;
+}));
